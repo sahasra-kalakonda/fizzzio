@@ -212,18 +212,37 @@ button, input, select, textarea {
 }
 
 .logo-icon {
-  width: 30px; height: 30px;
+  width: 36px; height: 36px;
   color: var(--color-primary);
+  filter: drop-shadow(0 0 6px rgba(255, 20, 147, 0.55))
+          drop-shadow(0 0 12px rgba(0, 210, 180, 0.3));
+  overflow: visible;
 }
 
 .logo-text {
   font-size: 18px;
   font-weight: 800;
   letter-spacing: -0.5px;
-  color: var(--text-main);
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 40%, #00d2b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .logo-accent { color: var(--color-primary); }
+
+/* Logo bubble float animations */
+@keyframes logo-bubble-rise {
+  0%   { transform: translateY(0)   scale(1);    opacity: 0.9; }
+  50%  { transform: translateY(-4px) scale(1.08); opacity: 1;   }
+  100% { transform: translateY(0)   scale(1);    opacity: 0.9; }
+}
+.logo-bubble   { animation: logo-bubble-rise 2.2s ease-in-out infinite; }
+.logo-bubble-1 { animation-delay: 0s;    animation-duration: 2.2s; }
+.logo-bubble-2 { animation-delay: 0.35s; animation-duration: 1.9s; }
+.logo-bubble-3 { animation-delay: 0.7s;  animation-duration: 2.5s; }
+.logo-bubble-4 { animation-delay: 1.0s;  animation-duration: 2.0s; }
+.logo-bubble-5 { animation-delay: 1.4s;  animation-duration: 1.7s; }
 
 .pulse-indicator {
   width: 8px; height: 8px;
@@ -1144,3 +1163,95 @@ button, input, select, textarea {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ============================================
+   FIZZ COACH — Stick Figure Character System
+   ============================================ */
+
+.fizz-coach-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.fizz-coach-wrap svg {
+  overflow: visible;
+  filter: drop-shadow(0 0 6px rgba(255, 20, 147, 0.45))
+          drop-shadow(0 0 12px rgba(0, 210, 180, 0.3));
+}
+
+.fizz-coach-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #ff69b4;
+  text-transform: uppercase;
+  opacity: 0.85;
+  text-shadow: 0 0 8px rgba(255, 20, 147, 0.6);
+  white-space: nowrap;
+}
+
+/* Sidebar coach — positioned at bottom of sidebar above badge */
+.sidebar-coach {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 8px;
+}
+
+/* Dashboard coach — floats in corner of highlight card */
+.highlight-coach-wrap {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  z-index: 2;
+}
+
+/* Log view coach — sits beside form header text */
+.log-coach-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+/* Posture coach — beside coaching panel header */
+.posture-coach-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Recovery coach — beside muscle card header */
+.recovery-coach-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Bubble float animation */
+@keyframes fizz-bubble-float {
+  0%   { transform: translateY(0px) scale(1);   opacity: 0.8; }
+  50%  { transform: translateY(-6px) scale(1.1); opacity: 1;   }
+  100% { transform: translateY(0px) scale(1);   opacity: 0.8; }
+}
+
+/* Coach bounce */
+@keyframes fizz-coach-bounce {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-4px); }
+}
+
+.fizz-coach-wrap svg {
+  animation: fizz-coach-bounce 2.4s ease-in-out infinite;
+}
+
+.fizz-bubble {
+  animation: fizz-bubble-float 1.8s ease-in-out infinite;
+}
+.fizz-bubble:nth-child(2) { animation-delay: 0.3s; }
+.fizz-bubble:nth-child(3) { animation-delay: 0.6s; }
+.fizz-bubble:nth-child(4) { animation-delay: 0.9s; }
